@@ -4,13 +4,13 @@
 
 > **WHAT**：可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化，三个核心概念：镜像、容器、仓库
 >
-> - 快速，一致地交付您的应用程序
+> + 快速，一致地交付您的应用程序
 >   - 允许开发人员使用您提供的应用程序或服务的本地容器在标准化环境中工作，从而简化了开发的生命周期
-> - 响应式部署和扩展
+> + 响应式部署和扩展
 >   - 基于容器的平台，允许高度可移植的工作负载，可移植性和轻量级的特性，实时扩展或拆除应用程序和服务
-> - 在同一硬件上运行更多工作负载
+> + 在同一硬件上运行更多工作负载
 >   - 非常适合于高密度环境以及中小型部署，而您可以用更少的资源做更多的事情
-> - 这里推荐我认为讲的很不错的一篇文章https://blog.csdn.net/deng624796905/article/details/86493330
+> + 这里推荐我认为讲的很不错的一篇文章https://blog.csdn.net/deng624796905/article/details/86493330
 >
 > **WHY**：docker的一个核心就是容器（沙箱），在开发环境开发的代码，到测试环境需要调整，到预生产环境也需要调整，到生产环境更加需要调整，而我们想要的是一次部署到处运行，这就是为什么使用docker。
 >
@@ -72,9 +72,9 @@
 >
 > **yum**：提供了查找、安装、删除某一个、一组甚至全部软件包的命令，
 >
-> - **install**：安装
+> + **install**：安装
 >
-> - **-y**：安装过程的提示选择全部为"yes"
+> + **-y**：安装过程的提示选择全部为"yes"
 
 ![1578540090773](assets/1578540090773.png)
 
@@ -103,12 +103,12 @@
 
 > **daemon.json**文件内容解析：
 >
-> - graph：docker的工作目录，docker会在下面生成一大堆文件
-> - storage-driver： 存储驱动
-> - insecure-registries：私有仓库
-> - registry-mirrors：国内加速源
-> - bip：docker容器地址（ip的中间两位和我现在的外网129.204.217.99的后两位有对照关系，方便出问题了快速定位在哪个宿主机，但是我这里没改）
-> - live-restrore：容器引擎死掉的事情，起来的docker是否继续活着
+> + graph：docker的工作目录，docker会在下面生成一大堆文件
+> + storage-driver： 存储驱动
+> + insecure-registries：私有仓库
+> + registry-mirrors：国内加速源
+> + bip：docker容器地址（ip的中间两位和我现在的外网129.204.217.99的后两位有对照关系，方便出问题了快速定位在哪个宿主机，但是我这里没改）
+> + live-restrore：容器引擎死掉的事情，起来的docker是否继续活着
 >
 > systemctl status：查看服务信息
 >
@@ -124,10 +124,9 @@
 ~]# docker run hello-world
 # docker是典型的CS架构
 ~~~
-
 > **docker run**：创建一个新的容器并运行，现在本地是没有镜像的，但是它会自动拉取网上的，如下图：
 >
-> - 语法：docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+> + 语法：docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
 ![1578550425609](assets/1578550425609.png)
 
@@ -159,7 +158,7 @@ docker.io/library/alipine:3.10.1
 
 > 复习：
 >
-> - cat：用于连接文件并打印内容到页面
+> + cat：用于连接文件并打印内容到页面
 
 ![1578551787380](assets/1578551787380.png)
 
@@ -167,7 +166,7 @@ docker.io/library/alipine:3.10.1
 
 
 
-### Docker镜像管理实战
+#
 
 ~~~
 ~]# docker search alpine
@@ -178,7 +177,7 @@ docker.io/library/alipine:3.10.1
 
 > **docker pull**：从镜像仓库中拉取或者更新指定镜像
 >
-> - 语法：**docker pull [OPTIONS] NAME[:TAG|@DIGEST]**
+> + 语法：**docker pull [OPTIONS] NAME[:TAG|@DIGEST]*
 
 ![1578551972565](assets/1578551972565.png)
 
@@ -194,7 +193,7 @@ docker.io/library/alipine:3.10.1
 >
 > **docker tag**：标记本地镜像，将其归入某一仓库
 >
-> - 语法：docker tag [OPTIONS] IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]
+> + 语法：docker tag [OPTIONS] IMAGE[:TAG] [REGISTRYHOST/][USERNAME/]NAME[:TAG]
 
 ![1578552367676](assets/1578552367676.png)
 
@@ -204,7 +203,7 @@ docker.io/library/alipine:3.10.1
 
 > **docker push**：将本地的镜像上传到镜像仓库,要先登陆到镜像仓库，带版本号
 >
-> - 语法：docker push [OPTIONS] NAME[:TAG]
+> + 语法：docker push [OPTIONS] NAME[:TAG]
 
 ~~~
 ~]# docker rmi 965ea09ff2eb
@@ -214,7 +213,7 @@ docker.io/library/alipine:3.10.1
 
 > **docker rmi**：删除本地一个或多少镜像
 >
-> - **-f**：强制删除
+> + **-f**：强制删除
 
 ![1578552844322](assets/1578552844322.png)
 
@@ -286,10 +285,10 @@ docker.io/library/alipine:3.10.1
 
 > **docker run**: 
 >
-> - **--rm** ：用完即删
-> - **--name**：指定名字
-> - **-d**：放到后台，非交互式的
-> - **-p81:80**：映射端口，宿主机跑81端口，容器（nginx）跑80端口
+> + **--rm** ：用完即删
+> + **--name**：指定名字
+> + **-d**：放到后台，非交互式的
+> + **-p81:80**：映射端口，宿主机跑81端口，容器（nginx）跑80端口
 >
 > **docker push**：推送到我们的远程仓库（公网）
 >
@@ -316,7 +315,7 @@ EOF
 :/# apt-get update && apt-get install curl -y
 :/# curl -k https://www.baidu.com
 :/# exit
-~]# docker ps -a
+~]# docker ps -ad
 # 把这个容器push到远程从库，后面会用到
 ~]# docker commit -p 60c24fa9c6ff 909336740/nginx:curl
 ~]# docker push 909336740/nginx:curl
@@ -391,7 +390,7 @@ server {
    root /usr/share/nginx/html;
 }
 
-dockerfile]# ll
+dockerfile]# l 
 dockerfile]# wget www.baidu.com -O index.html
 dockerfile]# docker build . -t 909336740/nginx:baidu
 dockerfile]# docker run --rm -p80:80 909336740/nginx:baidu
@@ -401,7 +400,7 @@ dockerfile]# docker run --rm -p80:80 909336740/nginx:baidu
 >
 > **wget**：下载文件工具
 >
-> - **-O**：并将文档写入后面指定的文件（这里是index.html）
+> + **-O**：并将文档写入后面指定的文件（这里是index.html）
 
 ![1578565889942](assets/1578565889942.png)
 
@@ -436,8 +435,8 @@ dockerfile]# docker run --rm -p80:80 909336740/nginx:baidu
 
 > **原理/源码解析：**
 >
-> - [虚拟机和容器的对比图](https://github.com/ben1234560/k8s_PaaS/blob/master/%E5%8E%9F%E7%90%86%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/Docker%E5%9F%BA%E7%A1%80.md#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%92%8C%E5%AE%B9%E5%99%A8%E7%9A%84%E5%AF%B9%E6%AF%94%E5%9B%BE)
-> - [深入理解容器镜像](https://github.com/ben1234560/k8s_PaaS/blob/master/%E5%8E%9F%E7%90%86%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/Docker%E5%9F%BA%E7%A1%80.md#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F)
+> + [虚拟机和容器的对比图](https://github.com/ben1234560/k8s_PaaS/blob/master/%E5%8E%9F%E7%90%86%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/Docker%E5%9F%BA%E7%A1%80.md#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%92%8C%E5%AE%B9%E5%99%A8%E7%9A%84%E5%AF%B9%E6%AF%94%E5%9B%BE)
+> + [深入理解容器镜像](https://github.com/ben1234560/k8s_PaaS/blob/master/%E5%8E%9F%E7%90%86%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/Docker%E5%9F%BA%E7%A1%80.md#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F)
 
 恭喜你已经完成了docker的部分，当然，你也许还是云里雾里，不用担心，后续我们会继续用到这些内容，如果你对docker的历史、源码等解析有兴趣，推荐书籍：深入剖析kubernetes（书籍），你也可以去下载免费的https://pan.baidu.com/s/1gWAQUVsqs1AdMPvRuaEtNA 提取码：q0ht
 
