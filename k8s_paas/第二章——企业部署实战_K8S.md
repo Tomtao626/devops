@@ -7,50 +7,51 @@
 > **WHY**：为什么使用它，因为它是管理docker容器最主流的编排工具
 
 - Pod
-    - Pod是K8S里能够被运行的最小的逻辑单元（原子单元）
-    - 1个Pod里面可以运行多个容器，它们共享UTS+NET+IPC名称空间
-    - 可以把Pod理解成豌豆荚，而同一Pod内的每个容器是一颗颗豌豆
-    - 一个Pod里运行多个容器，又叫边车（SideCar）模式
--
-
-Pod控制器（关于更多<a href="https://github.com/ben1234560/k8s_PaaS/blob/master/%E5%8E%9F%E7%90%86%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/Kubernetes%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.md#%E5%88%9D%E8%AF%86pod">
-初识Pod</a>） - Pod控制器是Pod启动的一种模板，用来保证在K8S里启动的Pod始终按照人们的预期运行（副本数、生命周期、健康状态检查...） - Pod内提供了众多的Pod控制器，常用的有以下几种： - Deployment
-
-- DaemonSet - ReplicaSet - StatefulSet - Job - Cronjob
-
+  - Pod是K8S里能够被运行的最小的逻辑单元（原子单元）
+  - 1个Pod里面可以运行多个容器，它们共享UTS+NET+IPC名称空间
+  - 可以把Pod理解成豌豆荚，而同一Pod内的每个容器是一颗颗豌豆
+  - 一个Pod里运行多个容器，又叫边车（SideCar）模式
+- Pod控制器（关于更多<a href="https://github.com/ben1234560/k8s_PaaS/blob/master/%E5%8E%9F%E7%90%86%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/Kubernetes%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.md#%E5%88%9D%E8%AF%86pod">初识Pod</a>）
+  - Pod控制器是Pod启动的一种模板，用来保证在K8S里启动的Pod始终按照人们的预期运行（副本数、生命周期、健康状态检查...）
+  - Pod内提供了众多的Pod控制器，常用的有以下几种：
+    - Deployment
+    - DaemonSet
+    - ReplicaSet
+    - StatefulSet
+    - Job
+    - Cronjob
 - Name
-    - 由于K8S内部，使用“资源”来定义每一种逻辑概念（功能），故每种“资源”，都应该有自己的“名称”
-    - “资源”有api版本（apiVersion）类别（kind）、元数据（metadata）、定义清单（spec）、状态（status）等配置信息
-    - “名称”通常定义在“资源”的“元数据”信息里
-- <a href="https://github.com/ben1234560/k8s_PaaS/blob/master/%E5%8E%9F%E7%90%86%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/Docker%E5%9F%BA%E7%A1%80.md#%E5%85%B3%E4%BA%8Enamespace">
-  namespace</a>
-    - 随着项目增多、人员增加、集群规模的扩大，需要一种能够隔离K8S内各种“资源”的方法，这就是名称空间
-    - 名称空间可以理解尾K8S内部的虚拟集群组
-    - 不同名称空间内的“资源”名称可以相同，相同名称空间内的同种“资源”、“名称”不能相同
-    - 合理的使用K8S名称空间，使得集群管理员能够更好的对交付到K8S里的服务进行分类管理和浏览
-    - K8S内默认存在的名称空间有：default、kube-system、kube-public
-    - 查询K8S里特定“资源”要带上想应得名称空间
+  - 由于K8S内部，使用“资源”来定义每一种逻辑概念（功能），故每种“资源”，都应该有自己的“名称”
+  - “资源”有api版本（apiVersion）类别（kind）、元数据（metadata）、定义清单（spec）、状态（status）等配置信息
+  - “名称”通常定义在“资源”的“元数据”信息里
+- <a href="https://github.com/ben1234560/k8s_PaaS/blob/master/%E5%8E%9F%E7%90%86%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/Docker%E5%9F%BA%E7%A1%80.md#%E5%85%B3%E4%BA%8Enamespace">namespace</a>
+  - 随着项目增多、人员增加、集群规模的扩大，需要一种能够隔离K8S内各种“资源”的方法，这就是名称空间
+  - 名称空间可以理解尾K8S内部的虚拟集群组
+  - 不同名称空间内的“资源”名称可以相同，相同名称空间内的同种“资源”、“名称”不能相同
+  - 合理的使用K8S名称空间，使得集群管理员能够更好的对交付到K8S里的服务进行分类管理和浏览
+  - K8S内默认存在的名称空间有：default、kube-system、kube-public
+  - 查询K8S里特定“资源”要带上想应得名称空间
 - Label
-    - 标签是K8S特色的管理方式，便于分类管理资源对象
-    - 一个标签可以对应多个资源，一个资源也可以有多个标签，它们是多对多的关系
-    - 一个资源拥有多个标签，可以实现不同维度的管理
-    - 标签的组成：key=value
-    - 与标签类似的，还有一种“注解”（annotations）
+  - 标签是K8S特色的管理方式，便于分类管理资源对象
+  - 一个标签可以对应多个资源，一个资源也可以有多个标签，它们是多对多的关系
+  - 一个资源拥有多个标签，可以实现不同维度的管理
+  - 标签的组成：key=value
+  - 与标签类似的，还有一种“注解”（annotations）
 - Label选择器
-    - 给资源打上标签后，可以使用标签选择器过滤指定的标签
-    - 标签选择器目前有两个：基于等值关系（等于、不等于）和基于集合关系（属于、不属于、存在）
-    - 许多资源支持内嵌标签选择器字段
-        - matchLabels
-        - matchExpressions
+  - 给资源打上标签后，可以使用标签选择器过滤指定的标签
+  - 标签选择器目前有两个：基于等值关系（等于、不等于）和基于集合关系（属于、不属于、存在）
+  - 许多资源支持内嵌标签选择器字段
+    - matchLabels
+    - matchExpressions
 - Service
-    - 在K8S的世界里，虽然每个Pod都会被分配一个单独的IP地址，但这个IP地址会随着Pod的销毁而消失
-    - Service（服务）就是用来解决这个问题的核心概念
-    - 一个Service可以看作一组提供相同服务的Pod的对外访问接口
-    - Service作用与哪些Pod是通过标签选择器来定义的
+  - 在K8S的世界里，虽然每个Pod都会被分配一个单独的IP地址，但这个IP地址会随着Pod的销毁而消失
+  - Service（服务）就是用来解决这个问题的核心概念
+  - 一个Service可以看作一组提供相同服务的Pod的对外访问接口
+  - Service作用与哪些Pod是通过标签选择器来定义的
 - Ingress
-    - Ingress是K8S集群里工作在OSI网络参考模型下，第7层的应用，对外暴露的接口
-    - Service只能进行L4流量调度，表现形式是ip+port
-    - Ingress则可以调度不同业务域、不同URL访问路径的业务流量
+  - Ingress是K8S集群里工作在OSI网络参考模型下，第7层的应用，对外暴露的接口
+  - Service只能进行L4流量调度，表现形式是ip+port
+  - Ingress则可以调度不同业务域、不同URL访问路径的业务流量
 
 简单理解：Pod可运行的原子，name定义名字，namespace名称空间（放一堆名字），label标签（另外的名字），service提供服务，ingress通信
 
@@ -96,6 +97,8 @@ Pod控制器（关于更多<a href="https://github.com/ben1234560/k8s_PaaS/blob/
 > 200机器：运维主机（放各种文件资源）
 >
 > 这样控节点有两个，运算节点有两个，就是小型的分布式，现在你可能没办法理解这些内容，我们接着做下去，慢慢的，你就理解了
+
+
 
 ### 实验机器安装详解
 
@@ -202,6 +205,8 @@ Pod控制器（关于更多<a href="https://github.com/ben1234560/k8s_PaaS/blob/
 >
 > - **install**：安装
 > - **-y**：当安装过程提示选择全部为"yes"
+
+
 
 ### K8S前置准备工作——bind9安装部署（DNS服务）
 
@@ -377,6 +382,8 @@ DNS1=10.4.7.11
 
 完成
 
+
+
 ### K8S前置工作——准备签发证书环境
 
 > **WHAT**： 证书，可以用来审计也可以保障安全，k8S组件启动的时候，则需要有对应的证书，证书的详解你也可以在网上搜到，这里就不细细说明了
@@ -460,9 +467,11 @@ certs]# cat ca.pem
 
 ![1578822598528](assets/1578822598528.png)
 
+
+
 ### K8S前置工作——部署docker环境
 
-> **WHAY**：是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows 机器上，也可以实现虚拟化。
+> **WHAT**：是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows 机器上，也可以实现虚拟化。
 >
 > **WHY**：Pod里面就是由数个docker容器组成，Pod是豌豆荚，docker容器是里面的豆子。
 
@@ -497,6 +506,8 @@ certs]# cat ca.pem
 > **daemon.json解析：**重点说一下这个为什么10.4.7.21机器对应着172.7.21.1/24，这里可以看到10的21对应得是172的21，这样做的好处就是，当你的pod出现问题时，你可以马上定位到是在哪台机器出现的问题，是21还是22还是其它的，这点在生产上非常重要，有时候你的dashboard（后面会安装）宕掉了，你没办法只能去机器找，而这时候你又找不到的时候，你老板会拿你祭天的
 
 ![1578826534378](assets/1578826534378.png)
+
+
 
 ### K8S前置工作——部署harbor仓库
 
@@ -657,6 +668,8 @@ harbor]# docker push harbor.od.com/public/nginx:v1.7.9
 ![1578832524891](assets/1578832524891.png)
 
 成功，此时你已成功建立了自己的本地私有仓库
+
+
 
 ### 安装部署主控节点服务etcd
 
@@ -902,6 +915,8 @@ etcd]# netstat -luntp|grep etcd
 > 这里你再哪个机器先update，哪个机器就是leader
 
 完成
+
+
 
 ### 部署API-server集群
 
@@ -1188,15 +1203,21 @@ bin]# supervisorctl status
 
 完成
 
+
+
 ### 安装部署主控节点L4反代服务
 
 根据我们架构图，在11/12机器上做反代
 
 ![1584701103579](assets/1584701103579.png)
 
+安装nginx时另一个注意事项 <a href="https://github.com/ben1234560/k8s_PaaS/issues/16">点击链接  </a>
+
+（感谢 https://github.com/nangongchengfeng/）
+
 ~~~
 # 11/12机器
-~]# yum install nginx -y
+~]# yum install nginx nginx-mod-stream -y
 # 添加在最下面
 ~]# vi /etc/nginx/nginx.conf
 stream {
@@ -1314,6 +1335,8 @@ vrrp_instance VI_1 {
 }
 ~~~
 
+
+
 ~~~
 # 11/12机器
 ~]# systemctl start keepalived
@@ -1355,6 +1378,8 @@ vrrp_instance VI_1 {
 ![1578841301006](assets/1578841301006.png)
 
 完成
+
+
 
 ### 安装部署controller-manager（节点控制器/调度器服务）
 
@@ -1447,11 +1472,13 @@ bin]# kubectl get cs
 >
 > **kubectl get**：获取列出一个或多个资源的信息
 >
-> - 上面一条命令的意思是： 列出所有cs信息
+> - 上面一条命令的意思是：    列出所有cs信息
 
 ![1578842317467](assets/1578842317467.png)
 
 完成
+
+
 
 ### 安装部署运算节点服务（kubelet）
 
@@ -1632,6 +1659,8 @@ bin]# kubectl get nodes
 ![1579071142869](assets/1579071142869.png)
 
 完成
+
+
 
 ### 安装部署运算节点服务（kube-proxy）
 
