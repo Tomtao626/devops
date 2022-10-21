@@ -346,3 +346,12 @@ docker run --rm -p80:80 tomtaodev/nginx:baidu
 > **wget**：下载文件工具
 >
 > + **-O**：并将文档写入后面指定的文件（这里是index.html）
+
+### dockerfile四种网络类型
+
+- Bridge contauner（NAT）   桥接式网络模式(默认)
+- None(Close) container   封闭式网络模式，不为容器配置网络
+- Host(open) container   开放式网络模式，和宿主机共享网络
+- Container(join) container   联合挂载式网络模式，和其他容器共享网络
+
+> 用什么类型的网络要根据我们的业务去决定
