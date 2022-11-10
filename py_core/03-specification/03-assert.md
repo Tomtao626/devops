@@ -1,6 +1,6 @@
 ---
 layout: mypost
-title: 02-assert
+title: 03-assert
 categories: [Python]
 ---
 
