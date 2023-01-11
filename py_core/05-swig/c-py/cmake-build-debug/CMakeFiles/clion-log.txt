@@ -1,5 +1,0 @@
-"/Users/taotom/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=/Users/taotom/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/CLion.app/Contents/bin/ninja/mac/ninja" -G Ninja -S /Users/taotom/Documents/workspaces/person/pywork/devops/py_core/05-swig -B /Users/taotom/Documents/workspaces/person/pywork/devops/py_core/05-swig/cmake-build-debug
--- Found PythonLibs: /Library/Frameworks/Python.framework/Versions/3.9/lib/libpython3.9.dylib (found version "3.9.11") 
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/taotom/Documents/workspaces/person/pywork/devops/py_core/05-swig/cmake-build-debug
